@@ -2,6 +2,6 @@
 
 class WelcomeController < ApplicationController
   def index
-    render plain: 'ok'
+    render component: 'Welcome', props: {}
   end
 end

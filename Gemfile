@@ -10,3 +10,6 @@ gem 'arel', :github => 'rails/arel'
 
 # bindings for the SQLite3 embedded database
 gem 'sqlite3'
+
+# easy to use React and JSX in your rails application
+gem 'react-rails', '~> 1.5.0'
