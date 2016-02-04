@@ -2,6 +2,6 @@
 
 class WelcomeController < ApplicationController
   def index
-    render component: 'Welcome', props: {}
+    render component: 'Welcome', props: {}, prerender: true
   end
 end
