@@ -87,4 +87,23 @@ Then create `components/welcome.js.jsx`
           }
         }
 
+# create some models
 
+First create a migration
+
+        bundle exec rails generate migration create_games_players_ratings_teams
+
+Then enter `create_table` statements
+
+        # ...
+        create_table "teams", force: true do |t|
+          t.integer  "rank"
+          t.integer  "result_id"
+          t.datetime "created_at"
+          t.datetime "updated_at"
+        end
+        # ...
+
+Then migrate
+
+        bundle exec rails db:migrate
