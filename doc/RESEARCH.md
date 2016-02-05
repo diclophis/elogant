@@ -109,3 +109,8 @@ Then migrate
         bundle exec rails db:migrate
 
 Then add some models: 64b73e9a51979180501051c1b3c640c8c150d13b
+
+# https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
+# https://github.com/stympy/faker
+# https://github.com/rspec/rspec-rails
+# https://github.com/elovation/elovation
