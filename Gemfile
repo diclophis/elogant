@@ -27,7 +27,7 @@ group :test do
   gem 'mocha'
 
   # a testing framework for Rails
-  gem 'rspec-rails', '~> 2.14.2'
+  gem 'rspec-rails'
 
   # provides "time travel", "time freezing", and "time acceleration" capabilities
   gem 'timecop'

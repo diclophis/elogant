@@ -107,3 +107,5 @@ Then enter `create_table` statements
 Then migrate
 
         bundle exec rails db:migrate
+
+Then add some models: 64b73e9a51979180501051c1b3c640c8c150d13b
