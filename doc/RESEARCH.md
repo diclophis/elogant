@@ -201,6 +201,8 @@ We need to create `app/assets/javascripts/components/game.js.jsx`
 
         #NOTE: 04743da4c8a529a59ce68547ea5ea4a67d9bbafc
 
+More details on rails model serialization gotchas: 791d0d77ea835392ea6acdda71e0708ca31f684f
+
 # READMES
 
 - https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
