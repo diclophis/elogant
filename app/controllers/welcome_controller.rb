@@ -2,6 +2,7 @@
 
 class WelcomeController < ApplicationController
   def index
-    render component: 'Welcome', props: {}, prerender: true
+    @games = Game.all
+    render component: 'Welcome', props: {:games => @games}, prerender: true
   end
 end
