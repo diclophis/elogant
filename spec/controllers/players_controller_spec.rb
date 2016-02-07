@@ -7,34 +7,34 @@ describe PlayersController do
     it "exposes a new player" do
       get :new
 
-      assigns(:player).should_not be_nil
+      expect(assigns(:player)).to_not eq(nil)
     end
   end
 
   describe "create" do
     it "creates a player and redirects to dashboard" do
-      post :create, player: {name: "Drew", email: "drew@example.com"}
+      post :create, params: { player: { name: "Drew", email: "drew@example.com" } }
 
       player = Player.where(name: "Drew", email: "drew@example.com").first
 
-      player.should_not be_nil
-      response.should redirect_to(root_path)
+      expect(player).to_not eq(nil)
+      expect(response).to redirect_to(root_path)
     end
 
     it "renders new given invalid params" do
       FactoryGirl.create(:player, name: "Drew")
 
-      post :create, player: {name: "Drew"}
+      post :create, params: { player: { name: "Drew" } }
 
       #TODO: response.should render_template(:new)
     end
 
     it "protects against mass assignment" do
       travel(0) do
-        post :create, player: {created_at: 3.days.ago, name: "Drew"}
+        post :create, params: { player: { created_at: 3.days.ago, name: "Drew" } }
 
         player = Player.where(name: "Drew").first
-        player.created_at.should > 3.days.ago
+        expect(player.created_at).to be >= 3.days.ago
       end
     end
   end
@@ -43,10 +43,10 @@ describe PlayersController do
     it "deletes a player with no results" do
       player = FactoryGirl.create(:player)
 
-      delete :destroy, id: player
+      delete :destroy, params: { id: player }
 
-      response.should redirect_to(root_path)
-      Player.find_by_id(player.id).should be_nil
+      expect(response).to redirect_to(root_path)
+      expect(Player.find_by_id(player.id)).to eq(nil)
     end
 
     it "doesn't allow deleting a player with results" do
@@ -58,10 +58,10 @@ describe PlayersController do
 
       player = result.players.first
 
-      delete :destroy, id: player
+      delete :destroy, params: { id: player }
 
-      response.should redirect_to(root_path)
-      Player.find_by_id(player.id).should == player
+      expect(response).to redirect_to(root_path)
+      expect(Player.find_by_id(player.id)).to eq(player)
     end
   end
 
@@ -69,7 +69,7 @@ describe PlayersController do
     it "exposes the player for editing" do
       player = FactoryGirl.create(:player)
 
-      get :edit, id: player
+      get :edit, params: { id: player }
 
       assigns(:player).should == player
     end
@@ -80,7 +80,7 @@ describe PlayersController do
       it "redirects to the player show page" do
         player = FactoryGirl.create(:player, name: "First name")
 
-        put :update, id: player, player: {name: "Second name"}
+        put :update, params: { id: player, player: { name: "Second name" } }
 
         response.should redirect_to(player_path(player))
       end
@@ -88,7 +88,7 @@ describe PlayersController do
       it "updates the player with the provided attributes" do
         player = FactoryGirl.create(:player, name: "First name")
 
-        put :update, id: player, player: {name: "Second name"}
+        put :update, params: { id: player, player: { name: "Second name" } }
 
         player.reload.name.should == "Second name"
       end
@@ -97,7 +97,7 @@ describe PlayersController do
         travel(0) do
           player = FactoryGirl.create(:player, name: "First name")
 
-          put :update, id: player, player: {created_at: 3.days.ago}
+          put :update, params: { id: player, player: { created_at: 3.days.ago } }
 
           player.reload.created_at.should > 3.days.ago
         end
@@ -108,7 +108,7 @@ describe PlayersController do
       it "renders the edit page" do
         player = FactoryGirl.create(:player, name: "First name")
 
-        put :update, id: player, player: {name: nil}
+        put :update, params: { id: player, player: { name: nil } }
 
         #TODO: response.should render_template(:edit)
       end
@@ -119,7 +119,7 @@ describe PlayersController do
     it "exposes the player" do
       player = FactoryGirl.create(:player)
 
-      get :show, id: player
+      get :show, params: { id: player }
 
       assigns(:player).should == player
     end

@@ -213,3 +213,6 @@ More details on component nesting: eb87a048dcb111f2965157fce20a751b855a8c7e
 - https://github.com/stympy/faker
 - https://github.com/rspec/rspec-rails
 - https://github.com/elovation/elovation
+- http://ariya.ofilabs.com/2013/01/es6-and-array-comprehension.html
+- https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+- http://api.rubyonrails.org/classes/ActiveModel/Serializers/JSON.html

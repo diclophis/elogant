@@ -18,7 +18,6 @@ class Player < ActiveRecord::Base
     def losses
       where("teams.rank > ?", Team::FIRST_PLACE_RANK)
     end
-
   end
 
   before_destroy do
@@ -27,18 +26,6 @@ class Player < ActiveRecord::Base
 
   validates :name, uniqueness: true, presence: true
   validates :email, allow_blank: true, format: /@/
-
-  def error_messages
-    self.errors.full_messages
-  end
-
-  def error_mappings
-    self.errors
-  end
-
-  def as_json(opts = {})
-    super(:methods => [:error_messages, :error_mappings])
-  end
 
   def recent_results
     results.order("created_at DESC").limit(5)
@@ -65,5 +52,15 @@ class Player < ActiveRecord::Base
     results.where(game_id: game, teams: {rank: Team::FIRST_PLACE_RANK}).against(opponent).to_a.count { |r| !r.tie? }
   end
 
+  def error_messages
+    self.errors.full_messages
+  end
 
+  def error_mappings
+    self.errors
+  end
+
+  def as_json(opts = {})
+    super(:methods => [:error_messages, :error_mappings])
+  end
 end

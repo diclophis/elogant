@@ -98,6 +98,6 @@ class Game < ActiveRecord::Base
   end
 
   def as_json(opts)
-    super(:methods => [:valid_rating_types, :valid_allow_ties, :error_messages, :error_mappings])
+    super(:methods => [:valid_rating_types, :valid_allow_ties, :error_messages, :error_mappings, :top_ratings])
   end
 end

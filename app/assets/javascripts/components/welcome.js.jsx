@@ -10,6 +10,7 @@ class Welcome extends React.Component {
       return (
         <h2 key={i}>
           <a href={Routes.game_path(game.id)}>{game.name}</a>
+          {console.log(game.top_ratings)}
         </h2>
       );
     });
