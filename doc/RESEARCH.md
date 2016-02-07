@@ -203,6 +203,8 @@ We need to create `app/assets/javascripts/components/game.js.jsx`
 
 More details on rails model serialization gotchas: 791d0d77ea835392ea6acdda71e0708ca31f684f
 
+More details on array comprehensions: 281727d16a3cab3e40eb7268b10e0352cfd30f53
+
 # READMES
 
 - https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
