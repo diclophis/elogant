@@ -23,6 +23,9 @@ gem 'trueskill', github: 'saulabs/trueskill', require: 'saulabs/trueskill'
 # Generates javascript file that defines all Rails named routes as javascript helpers
 gem 'js-routes'
 
+# persistent execjs runtime used for execjs execution
+gem 'alaska'
+
 group :development, :test do
   # a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
   gem 'factory_girl_rails'
