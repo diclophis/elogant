@@ -8,7 +8,7 @@ class Welcome extends React.Component {
   render() {
     var mappedGames = this.props.games.map(function(game, i) {
       return (
-        <h2 key={i}><a href={"/games/" + game.id}>{game.name}</a></h2>
+        <h2 key={i}><a href={Routes.game_path(game.id)}>{game.name}</a></h2>
       );
     });
     return (
