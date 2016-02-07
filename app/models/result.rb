@@ -42,17 +42,18 @@ class Result < ActiveRecord::Base
   end
 
   def winners
-    teams.select{ |team| team.rank == Team::FIRST_PLACE_RANK }.map(&:players).flatten
+    teams.select { |team| team.rank == Team::FIRST_PLACE_RANK }.map(&:players).flatten
   end
 
   def losers
-    teams.select{ |team| team.rank != Team::FIRST_PLACE_RANK }.map(&:players).flatten
+    teams.select { |team| team.rank != Team::FIRST_PLACE_RANK }.map(&:players).flatten
   end
 
   def tie?
     teams.count == teams.winners.count
   end
 
+=begin
   def as_json(options = {})
     {
       winner: winners.first.name,
@@ -60,6 +61,7 @@ class Result < ActiveRecord::Base
       created_at: created_at.utc.to_s
     }
   end
+=end
 
   def most_recent?
     teams.all? do |team|
@@ -67,5 +69,17 @@ class Result < ActiveRecord::Base
         player.results.where(game_id: game.id).order("created_at DESC").first == self
       end
     end
+  end
+
+  def error_messages
+    self.errors.full_messages
+  end
+
+  def error_mappings
+    self.errors
+  end
+
+  def as_json(opts = {})
+    super(:methods => [:error_messages, :error_mappings])
   end
 end
