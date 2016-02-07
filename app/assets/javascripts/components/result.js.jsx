@@ -12,6 +12,7 @@ class Result extends React.Component {
         <ul>
           {mappedErrorMessages}
         </ul>
+        <input name="teams[a][players]" />
       </FormWidget>
     );
   }

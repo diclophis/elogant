@@ -82,4 +82,21 @@ class Result < ActiveRecord::Base
   def as_json(opts = {})
     super(:methods => [:error_messages, :error_mappings])
   end
+=begin
+  def player_options
+    Player.order("name ASC").all.map { |player| [player.name, player.id] }
+  end
+  <% @result.teams.each.with_index do |team, index| %>
+    <%= select "result[teams][#{index}]", "players", player_options, {include_blank: ''}, class: "players", multiple: @game.max_number_of_players_per_team != 1, "data-placeholder" => "Team #{index + 1}" %>
+
+    <% if index != @result.teams.size - 1 %>
+      <% if @game.allow_ties %>
+        <%= select "result[teams][#{index}]", :relation, ["defeats", "ties"], {} %>
+      <% else %>
+        <%= hidden_field_tag "result[teams][#{index}][relation]", :defeats, {} %>
+        Defeats:
+      <% end %>
+    <% end %>
+  <% end %>
+=end
 end

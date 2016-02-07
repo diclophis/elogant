@@ -8,10 +8,15 @@ class Welcome extends React.Component {
   render() {
     var mappedGames = this.props.games.map(function(game, i) {
       return (
-        <h2 key={i}>
-          <a href={Routes.game_path(game.id)}>{game.name}</a>
-          {console.log(game.top_ratings)}
-        </h2>
+        <div>
+          <h2 key={i}>
+            <a href={Routes.game_path(game.id)}>{game.name}</a>
+            {console.log(game.top_ratings)}
+          </h2>
+          <h3>
+            <a href={Routes.new_game_result_path(game.id)}>new result</a>
+          </h3>
+        </div>
       );
     });
 
@@ -26,14 +31,16 @@ class Welcome extends React.Component {
     return (
       <div>
         <div>
-          <h1>games</h1>
-          {mappedGames}
           <a href={Routes['new_game_path']()}>new game</a>
+          <h1>
+            games
+          </h1>
+          {mappedGames}
         </div>
         <div>
+          <a href={Routes['new_player_path']()}>new player</a>
           <h1>players</h1>
           {mappedPlayers}
-          <a href={Routes['new_player_path']()}>new player</a>
         </div>
       </div>
     );
