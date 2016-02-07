@@ -79,6 +79,14 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def valid_rating_types
+    RATER_MAPPINGS.keys    
+  end
+
+  def valid_allow_ties
+    [false, true]
+  end
+
   def error_messages
     self.errors.full_messages
   end
@@ -88,6 +96,6 @@ class Game < ActiveRecord::Base
   end
 
   def as_json(opts)
-    super(:methods => [:error_messages, :error_mappings])
+    super(:methods => [:valid_rating_types, :valid_allow_ties, :error_messages, :error_mappings])
   end
 end

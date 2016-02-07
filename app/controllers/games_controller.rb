@@ -22,8 +22,10 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new min_number_of_players_per_team: 1,
+                     max_number_of_players_per_team: 1,
                      rating_type: "trueskill",
                      min_number_of_teams: 2,
+                     max_number_of_teams: 2,
                      allow_ties: true
     render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
   end
