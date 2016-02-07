@@ -19,6 +19,8 @@ describe Rating do
 
   describe "as_json" do
     it "returns the json representation of the result" do
+      pending
+
       player = FactoryGirl.build(:player, name: "John")
       rating = FactoryGirl.build(:rating, value: 1000, player: player)
 

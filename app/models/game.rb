@@ -46,6 +46,7 @@ class Game < ActiveRecord::Base
     ratings.order(value: :desc)
   end
 
+=begin
   def as_json(options = {})
     {
       name: name,
@@ -53,6 +54,7 @@ class Game < ActiveRecord::Base
       results: recent_results.map(&:as_json)
     }
   end
+=end
 
   def players
     ratings.map(&:player)

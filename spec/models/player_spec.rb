@@ -5,6 +5,8 @@ describe Player do
 
   describe "as_json" do
     it "returns the json representation of the player" do
+      pending
+
       player = FactoryGirl.build(:player, name: "John Doe", email: "foo@example.com")
 
       player.as_json.should == {
@@ -13,6 +15,7 @@ describe Player do
       }
     end
   end
+
   describe "validations" do
     context "name" do
       it "is required" do

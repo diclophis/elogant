@@ -28,11 +28,16 @@ class Player < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
   validates :email, allow_blank: true, format: /@/
 
-  def as_json
-    {
-      name: name,
-      email: email
-    }
+  def error_messages
+    self.errors.full_messages
+  end
+
+  def error_mappings
+    self.errors
+  end
+
+  def as_json(opts = {})
+    super(:methods => [:error_messages, :error_mappings])
   end
 
   def recent_results

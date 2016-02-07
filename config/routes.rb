@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :ratings, only: [:index]
   end
 
+  resources :players do
+    resources :games, only: [:show], controller: 'player_games'
+  end
+
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 end
