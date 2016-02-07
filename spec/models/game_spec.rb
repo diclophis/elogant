@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe Game do
+  include ActiveSupport::Testing::TimeHelpers
   describe "game name" do
     it "has a game name" do
       return pending "foo"
@@ -38,11 +39,11 @@ describe Game do
       newer_results = nil
       game = FactoryGirl.create(:game)
 
-      Timecop.freeze(3.days.ago) do
+      travel(-3.days) do
         5.times.map { FactoryGirl.create(:result, game: game) }
       end
 
-      Timecop.freeze(1.day.ago) do
+      travel(-1.day) do
         newer_results = 20.times.map { FactoryGirl.create(:result, game: game) }
       end
 
@@ -55,11 +56,11 @@ describe Game do
       game = FactoryGirl.create(:game)
       old = new = nil
 
-      Timecop.freeze(2.days.ago) do
+      travel(-2.days) do
         old = FactoryGirl.create(:result, game: game)
       end
 
-      Timecop.freeze(1.days.ago) do
+      travel(-1.days) do
         new = FactoryGirl.create(:result, game: game)
       end
 

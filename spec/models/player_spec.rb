@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Player do
+  include ActiveSupport::Testing::TimeHelpers
+
   describe "as_json" do
     it "returns the json representation of the player" do
       player = FactoryGirl.build(:player, name: "John Doe", email: "foo@example.com")
@@ -70,11 +72,11 @@ describe Player do
       game = FactoryGirl.create(:game)
       player = FactoryGirl.create(:player)
 
-      Timecop.freeze(3.days.ago) do
+      travel(-3.days) do
         5.times { FactoryGirl.create(:result, game: game, teams: [FactoryGirl.create(:team, rank: 1, players: [player]), FactoryGirl.create(:team, rank: 2)]) }
       end
 
-      Timecop.freeze(1.day.ago) do
+      travel(-1.day) do
         newer_results = 5.times.map { FactoryGirl.create(:result, game: game, teams: [FactoryGirl.create(:team, rank: 1, players: [player]), FactoryGirl.create(:team, rank: 2)]) }
       end
 
@@ -86,11 +88,11 @@ describe Player do
       player = FactoryGirl.create(:player)
       old = new = nil
 
-      Timecop.freeze(2.days.ago) do
+      travel(-2.days) do
         old = FactoryGirl.create(:result, game: game, teams: [FactoryGirl.create(:team, rank: 1, players: [player]), FactoryGirl.create(:team, rank: 2)])
       end
 
-      Timecop.freeze(1.days.ago) do
+      travel(-1.days) do
         new = FactoryGirl.create(:result, game: game, teams: [FactoryGirl.create(:team, rank: 1, players: [player]), FactoryGirl.create(:team, rank: 2)])
       end
 

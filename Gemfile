@@ -14,7 +14,10 @@ gem 'sqlite3'
 # easy to use React and JSX in your rails application
 gem 'react-rails', '~> 1.5.0'
 
+# The Elo rating system is a method for calculating the relative skill levels of players in two-player games
 gem 'elo'
+
+# implements the trueskill algorithm
 gem 'trueskill', github: 'saulabs/trueskill', require: 'saulabs/trueskill'
 
 group :development, :test do
@@ -28,9 +31,6 @@ group :test do
 
   # a testing framework for Rails
   gem 'rspec-rails'
-
-  # provides "time travel", "time freezing", and "time acceleration" capabilities
-  gem 'timecop'
 
   # A library for generating fake data such as names, addresses, and phone numbers
   gem 'faker'
