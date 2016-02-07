@@ -15,51 +15,42 @@ class Game extends React.Component {
     });
 
     return (
-      <form action={this.props.game.id ? Routes.game_path(this.props.game.id) : Routes.games_path()} method="POST">
-        <input type="hidden" name="_method" value={this.props.game.id ? 'PATCH' : 'POST'}/>
-        <input type="hidden" name="authenticity_token" value={this.props.form_authenticity_token}/>
+      <FormWidget model={this.props.game} form_authenticity_token={this.props.form_authenticity_token} model_type="game" model_type_route="games">
         <h1>game</h1>
-        <div>
-          <ul>
-            {mappedErrorMessages}
-          </ul>
-          <p>
-            <label>Name:</label>
-            <input name="game[name]" defaultValue={this.props.game.name} />
-          </p>
-          <p>
-            <select name="game[allow_ties]" defaultValue={this.props.game.allow_ties}>
-              {mappedAllowTiesOptions}
-            </select>
-          </p>
-          <p>
-            <select name="game[rating_type]" defaultValue={this.props.game.rating_type}>
-              {mappedRatingTypeOptions}
-            </select>
-          </p>
-          <p>
-            <label>Max Player Per Team:</label>
-            <input name="game[max_number_of_players_per_team]" defaultValue={this.props.game.max_number_of_players_per_team} />
-          </p>
-          <p>
-            <label>Min Player Per Team:</label>
-            <input name="game[min_number_of_players_per_team]" defaultValue={this.props.game.min_number_of_players_per_team} />
-          </p>
-          <p>
-            <label>Max Teams:</label>
-            <input name="game[max_number_of_teams]" defaultValue={this.props.game.max_number_of_teams} />
-          </p>
-          <p>
-            <label>Min Teams:</label>
-            <input name="game[min_number_of_teams]" defaultValue={this.props.game.min_number_of_teams} />
-          </p>
-          <p>
-            <input type="submit" />
-            <input type="submit" name="_method" value="DELETE" />
-            <a href={Routes.root_path()}>cancel</a>
-          </p>
-        </div>
-      </form>
+        <ul>
+          {mappedErrorMessages}
+        </ul>
+        <p>
+          <label>Name:</label>
+          <input name="game[name]" defaultValue={this.props.game.name} />
+        </p>
+        <p>
+          <select name="game[allow_ties]" defaultValue={this.props.game.allow_ties}>
+            {mappedAllowTiesOptions}
+          </select>
+        </p>
+        <p>
+          <select name="game[rating_type]" defaultValue={this.props.game.rating_type}>
+            {mappedRatingTypeOptions}
+          </select>
+        </p>
+        <p>
+          <label>Max Player Per Team:</label>
+          <input name="game[max_number_of_players_per_team]" defaultValue={this.props.game.max_number_of_players_per_team} />
+        </p>
+        <p>
+          <label>Min Player Per Team:</label>
+          <input name="game[min_number_of_players_per_team]" defaultValue={this.props.game.min_number_of_players_per_team} />
+        </p>
+        <p>
+          <label>Max Teams:</label>
+          <input name="game[max_number_of_teams]" defaultValue={this.props.game.max_number_of_teams} />
+        </p>
+        <p>
+          <label>Min Teams:</label>
+          <input name="game[min_number_of_teams]" defaultValue={this.props.game.min_number_of_teams} />
+        </p>
+      </FormWidget>
     );
   }
 }
