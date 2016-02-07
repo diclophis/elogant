@@ -21,7 +21,7 @@ class Welcome extends React.Component {
           <ol>
             {mappedPlayersFromRatings(game.top_ratings)}
           </ol>
-          <a href={Routes.new_game_result_path(game.id)}>create result from match</a>
+          <a href={Routes.new_game_result_path(game.id)}>create result from a {game.name} match</a>
         </div>
       );
     });

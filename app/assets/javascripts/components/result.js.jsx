@@ -34,6 +34,7 @@ class Result extends React.Component {
           <select name={"result[teams][" + ti + "][players][]"}>
             {mappedPlayerOptions}
           </select>
+          <br/>
           {relationSelect(ti, this.props.result.valid_teams.length)}
         </div>
       );
