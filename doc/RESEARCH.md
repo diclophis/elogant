@@ -199,6 +199,8 @@ now try to run a spec `bundle exec rspec` ...
 
 We need to create `app/assets/javascripts/components/game.js.jsx`
 
+        #NOTE: 04743da4c8a529a59ce68547ea5ea4a67d9bbafc
+
 # READMES
 
 - https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
