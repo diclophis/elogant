@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     if @game.save
       redirect_to game_path(@game)
     else
-      render component: 'Game', props: {game: @game}, prerender: true
+      render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
     end
   end
 
@@ -17,7 +17,7 @@ class GamesController < ApplicationController
   end
 
   def edit
-    render component: 'Game', props: {game: @game}, prerender: true
+    render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
   end
 
   def new
@@ -25,7 +25,7 @@ class GamesController < ApplicationController
                      rating_type: "trueskill",
                      min_number_of_teams: 2,
                      allow_ties: true
-    render component: 'Game', props: {game: @game}, prerender: true
+    render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
   end
 
   def show
@@ -56,7 +56,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render component: 'Game', props: {game: @game}, prerender: true
+        render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
       end
       format.json do
         render json: @game
@@ -68,7 +68,7 @@ class GamesController < ApplicationController
     if @game.update_attributes(games_params)
       redirect_to game_path(@game)
     else
-      render component: 'Game', props: {game: @game}, prerender: true
+      render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
     end
   end
 

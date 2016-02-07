@@ -78,4 +78,16 @@ class Game < ActiveRecord::Base
       rater.update_ratings self, result.teams.order("rank ASC")
     end
   end
+
+  def error_messages
+    self.errors.full_messages
+  end
+
+  def error_mappings
+    self.errors
+  end
+
+  def as_json(opts)
+    super(:methods => [:error_messages, :error_mappings])
+  end
 end
