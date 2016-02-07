@@ -110,7 +110,98 @@ Then migrate
 
 Then add some models: 64b73e9a51979180501051c1b3c640c8c150d13b
 
-# https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
-# https://github.com/stympy/faker
-# https://github.com/rspec/rspec-rails
-# https://github.com/elovation/elovation
+# lets add a restful controller
+
+in `config/routes/rb`
+
+        resources :games do
+          resources :results, only: [:create, :destroy, :new]
+          resources :ratings, only: [:index]
+        end
+
+in `app/controllers/games_controller.rb`
+
+        class GamesController < ApplicationController
+          before_action :set_game, only: [:destroy, :edit, :show, :update]
+
+          def new
+            @game = Game.new min_number_of_players_per_team: 1,
+                             rating_type: "trueskill",
+                             min_number_of_teams: 2,
+                             allow_ties: true
+          end
+
+          def create
+            @game = Game.new(games_params)
+
+            if @game.save
+              redirect_to game_path(@game)
+            else
+              render :new
+            end
+          end
+        end
+
+        private
+
+        def set_game
+          @game = Game.find(params[:id])
+        end
+
+        def games_params
+          params.require(:game).permit(:name,
+                                      :rating_type,
+                                      :min_number_of_teams,
+                                      :max_number_of_teams,
+                                      :min_number_of_players_per_team,
+                                      :max_number_of_players_per_team,
+                                      :allow_ties)
+        end
+
+in `spec/controllers/games_controller_spec.rb`
+
+        require "spec_helper"
+
+        describe GamesController do
+          describe "new" do
+            it "exposes a new game" do
+              get :new
+
+              assigns(:game).should_not be_nil
+            end
+          end
+        end
+
+also of interest is the `rake routes` command:
+
+        $ bundle exec rake routes
+                 Prefix Verb   URI Pattern                           Controller#Action
+                   root GET    /                                     welcome#index
+           game_results POST   /games/:game_id/results(.:format)     results#create
+        new_game_result GET    /games/:game_id/results/new(.:format) results#new
+            game_result DELETE /games/:game_id/results/:id(.:format) results#destroy
+           game_ratings GET    /games/:game_id/ratings(.:format)     ratings#index
+                  games GET    /games(.:format)                      games#index
+                        POST   /games(.:format)                      games#create
+               new_game GET    /games/new(.:format)                  games#new
+              edit_game GET    /games/:id/edit(.:format)             games#edit
+                   game GET    /games/:id(.:format)                  games#show
+                        PATCH  /games/:id(.:format)                  games#update
+                        PUT    /games/:id(.:format)                  games#update
+                        DELETE /games/:id(.:format)                  games#destroy
+
+now try to run a spec `bundle exec rspec` ...
+
+        1) GamesController new exposes the game
+           Failure/Error: get :show, id: game
+           React::ServerRendering::PrerenderError:
+             Encountered error "ReferenceError: Game is not defined" when prerendering Game with {"game":{"name":"Dolorem","ratings":[],"results":[]}}
+
+We need to create `app/assets/javascripts/components/game.js.jsx`
+
+# READMES
+
+- https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
+- https://github.com/stympy/faker
+- https://github.com/rspec/rspec-rails
+- https://github.com/elovation/elovation

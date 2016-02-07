@@ -114,6 +114,10 @@ GEM
       json
     rack-test (0.6.3)
       rack (>= 1.0)
+    rails-controller-testing (0.1.0)
+      actionpack (~> 5.x)
+      actionview (~> 5.x)
+      activesupport (~> 5.x)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -173,6 +177,7 @@ DEPENDENCIES
   faker
   mocha
   rails!
+  rails-controller-testing
   react-rails (~> 1.5.0)
   rspec-rails
   sqlite3

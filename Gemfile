@@ -32,6 +32,9 @@ group :test do
   # a testing framework for Rails
   gem 'rspec-rails'
 
+  # for assigns(...) support in rspec-rails
+  gem 'rails-controller-testing'
+
   # A library for generating fake data such as names, addresses, and phone numbers
   gem 'faker'
 end
