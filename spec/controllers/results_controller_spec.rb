@@ -92,7 +92,7 @@ describe ResultsController do
 
         delete :destroy, game_id: game, id: result
 
-        response.should redirect_to(game_path(game))
+        response.should redirect_to(root_path)
 
         player_1_rating.reload.value.should == old_rating_1
         player_2_rating.reload.value.should == old_rating_2

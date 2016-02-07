@@ -20,6 +20,12 @@ class Player < ActiveRecord::Base
     end
   end
 
+  before_validation do
+    #unless teams.present?
+    #  teams << Team.new(rank: 2)
+    #end
+  end
+
   before_destroy do
     results.each { |result| result.destroy }
   end

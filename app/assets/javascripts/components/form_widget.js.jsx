@@ -3,7 +3,7 @@
 class FormWidget extends React.Component {
   render() {
     return (
-      <form action={this.props.model.id ? Routes[this.props.model_type + '_path'].apply(this, this.props.route_args) : Routes[this.props.model_type_route + '_path'].apply(this, this.props.route_args)} method="POST">
+      <form action={this.props.model.id ? Routes[this.props.model_type + '_path'].apply(this, this.props.route_args || [this.props.model.id]) : Routes[this.props.model_type_route + '_path'].apply(this, this.props.route_args)} method="POST">
         <input type="hidden" name="_method" value={this.props.model.id ? 'PATCH' : 'POST'}/>
         <input type="hidden" name="authenticity_token" value={this.props.form_authenticity_token}/>
         <div>

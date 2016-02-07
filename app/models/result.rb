@@ -71,6 +71,18 @@ class Result < ActiveRecord::Base
     end
   end
 
+  def valid_teams
+    teams
+  end
+
+  def valid_players
+    Player.order("name ASC").all.map { |player| [player.name, player.id] }
+  end
+
+  def valid_relations
+    ["defeats", "ties"]
+  end
+
   def error_messages
     self.errors.full_messages
   end
@@ -80,12 +92,9 @@ class Result < ActiveRecord::Base
   end
 
   def as_json(opts = {})
-    super(:methods => [:error_messages, :error_mappings])
+    super(:methods => [:valid_teams, :valid_relations, :valid_players, :valid_teams, :error_messages, :error_mappings])
   end
 =begin
-  def player_options
-    Player.order("name ASC").all.map { |player| [player.name, player.id] }
-  end
   <% @result.teams.each.with_index do |team, index| %>
     <%= select "result[teams][#{index}]", "players", player_options, {include_blank: ''}, class: "players", multiple: @game.max_number_of_players_per_team != 1, "data-placeholder" => "Team #{index + 1}" %>
 

@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
     response = ResultService.create(@game, params[:result])
 
     if response.success?
-      redirect_to game_path(@game)
+      redirect_to root_path
     else
       @result = response.result
       render component: 'Result', props: {game: @game, result: @result, form_authenticity_token: form_authenticity_token}, prerender: true
@@ -17,7 +17,7 @@ class ResultsController < ApplicationController
 
     response = ResultService.destroy(result)
 
-    redirect_to :back
+    redirect_to root_path
   end
 
   def new
