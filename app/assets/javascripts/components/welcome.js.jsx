@@ -6,41 +6,50 @@ class Welcome extends React.Component {
   }
 
   render() {
+    var mappedPlayersFromRatings = function(ratings) {
+      return ratings.map(function(rating, i) {
+        return(
+          <li key={i}>{rating.player.name}</li>
+        );
+      });
+    };
+
     var mappedGames = this.props.games.map(function(game, i) {
       return (
-        <div>
-          <h2 key={i}>
-            <a href={Routes.game_path(game.id)}>{game.name}</a>
-            {console.log(game.top_ratings)}
-          </h2>
-          <h3>
-            <a href={Routes.new_game_result_path(game.id)}>new result</a>
-          </h3>
+        <div key={i}>
+          Top <a href={Routes.game_path(game.id)}>{game.name}</a> players
+          <ol>
+            {mappedPlayersFromRatings(game.top_ratings)}
+          </ol>
+          <a href={Routes.new_game_result_path(game.id)}>create result from match</a>
         </div>
       );
     });
 
     var mappedPlayers = this.props.players.map(function(player, i) {
       return (
-        <h2 key={i}>
+        <div key={i}>
           <a href={Routes.player_path(player.id)}>{player.name}</a>
-        </h2>
+        </div>
       );
     });
 
     return (
       <div>
         <div>
-          <a href={Routes['new_game_path']()}>new game</a>
           <h1>
             games
           </h1>
           {mappedGames}
         </div>
         <div>
-          <a href={Routes['new_player_path']()}>new player</a>
           <h1>players</h1>
           {mappedPlayers}
+        </div>
+        <div>
+          <h1>admin</h1>
+          <a href={Routes['new_player_path']()}>new player</a>
+          <a href={Routes['new_game_path']()}>new game</a>
         </div>
       </div>
     );

@@ -21,7 +21,7 @@ class Result extends React.Component {
     var relationSelect = function(i, result_teams_size) {
       if (i != (result_teams_size - 1)) {
         return (
-          <select name={"result[teams][" + i + "][relation]"}>
+          <select key={i} name={"result[teams][" + i + "][relation]"}>
             {mappedRelationOptions}
           </select>
         );
@@ -30,7 +30,7 @@ class Result extends React.Component {
 
     var mappedResultInputs = this.props.result.valid_teams.map(function(team, ti) {
       return(
-        <div>
+        <div key={ti}>
           <select name={"result[teams][" + ti + "][players][]"}>
             {mappedPlayerOptions}
           </select>
