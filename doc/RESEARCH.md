@@ -205,6 +205,8 @@ More details on rails model serialization gotchas: 791d0d77ea835392ea6acdda71e07
 
 More details on array comprehensions: 281727d16a3cab3e40eb7268b10e0352cfd30f53
 
+More details on component nesting: eb87a048dcb111f2965157fce20a751b855a8c7e
+
 # READMES
 
 - https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
