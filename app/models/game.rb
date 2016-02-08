@@ -1,5 +1,4 @@
-class Game < ActiveRecord::Base
-
+class Game < ApplicationRecord
   default_scope { order("updated_at DESC") }
 
   has_many :ratings, dependent: :destroy
@@ -10,7 +9,7 @@ class Game < ActiveRecord::Base
     "trueskill" => Rater::TrueSkillRater.new
   }
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :rating_type, inclusion: { in: RATER_MAPPINGS.keys, message: "must be a valid rating type" }
   validate do |game|
     if game.rater
@@ -45,16 +44,6 @@ class Game < ActiveRecord::Base
   def all_ratings
     ratings.order(value: :desc)
   end
-
-=begin
-  def as_json(options = {})
-    {
-      name: name,
-      ratings: top_ratings.map(&:as_json),
-      results: recent_results.map(&:as_json)
-    }
-  end
-=end
 
   def players
     ratings.map(&:player)

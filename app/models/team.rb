@@ -1,4 +1,4 @@
-class Team < ActiveRecord::Base
+class Team < ApplicationRecord
   FIRST_PLACE_RANK = 1
 
   has_and_belongs_to_many :players

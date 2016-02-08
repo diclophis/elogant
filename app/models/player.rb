@@ -1,4 +1,4 @@
-class Player < ActiveRecord::Base
+class Player < ApplicationRecord
   has_many :ratings, dependent: :destroy do
     def find_or_create(game)
       where(game_id: game.id).first || create({game: game, pro: false}.merge(game.rater.default_attributes))
@@ -18,12 +18,6 @@ class Player < ActiveRecord::Base
     def losses
       where("teams.rank > ?", Team::FIRST_PLACE_RANK)
     end
-  end
-
-  before_validation do
-    #unless teams.present?
-    #  teams << Team.new(rank: 2)
-    #end
   end
 
   before_destroy do

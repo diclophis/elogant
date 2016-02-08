@@ -1,4 +1,4 @@
-class Rating < ActiveRecord::Base
+class Rating < ApplicationRecord
   belongs_to :game
   belongs_to :player
   has_many :history_events, -> { order created_at: :desc }, class_name: "RatingHistoryEvent", dependent: :destroy
