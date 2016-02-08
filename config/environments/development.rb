@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # https://github.com/reactjs/react-rails#reactjs-builds
+  config.react.variant = :development
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
