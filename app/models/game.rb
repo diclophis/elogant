@@ -86,7 +86,7 @@ class Game < ActiveRecord::Base
   end
 
   def valid_allow_ties
-    [false, true]
+    [true, false]
   end
 
   def error_messages
