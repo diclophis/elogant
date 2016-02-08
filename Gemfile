@@ -26,6 +26,9 @@ gem 'alaska'
 group :production do
   # interface to the PostgreSQL RDBMS.
   gem 'pg'
+
+  # enables serving assets in production and setting your logger to standard out
+  gem 'rails_12factor'
 end
 
 group :development, :test do
