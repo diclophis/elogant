@@ -9,7 +9,7 @@ gem 'rails', :github => 'rails/rails'
 gem 'arel', :github => 'rails/arel'
 
 # easy to use React and JSX in your rails application
-gem 'react-rails', '~> 1.5.0'
+gem 'react-rails', '~> 1.6'
 
 # The Elo rating system is a method for calculating the relative skill levels of players in two-player games
 gem 'elo'
