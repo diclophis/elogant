@@ -46,12 +46,12 @@ describe ResultsController do
         game = FactoryGirl.create(:game, results: [])
         player = FactoryGirl.create(:player)
 
-        post :create, game_id: game.id, result: {
+        post :create, params: { game_id: game.id, result: {
           teams: {
             "0" => { players: [player.id.to_s] },
             "1" => { players: [player.id.to_s] }
           }
-        }
+        } }
 
         #TODO: response.should render_template(:new)
       end
@@ -90,7 +90,7 @@ describe ResultsController do
 
         request.env['HTTP_REFERER'] = game_path(game)
 
-        delete :destroy, game_id: game, id: result
+        delete :destroy, params: { game_id: game, id: result }
 
         response.should redirect_to(root_path)
 

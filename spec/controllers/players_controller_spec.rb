@@ -50,8 +50,6 @@ describe PlayersController do
     end
 
     it "doesn't allow deleting a player with results" do
-      #result = FactoryGirl.create(:result)
-
       two_teams = [ FactoryGirl.create(:team, { rank: 1 }), FactoryGirl.create(:team, { rank: 2 })] 
       game = FactoryGirl.create(:game, name: "First name")
       result = FactoryGirl.create(:result, {game: game, teams: two_teams})

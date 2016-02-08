@@ -150,22 +150,7 @@ describe GamesController do
         get :show, params: { id: game, format: :json }
 
         json_data = JSON.parse(response.body)
-        json_data.should == JSON.parse(game.to_json) #as_json(root: true)
-=begin
-        {
-          "name" => game.name,
-          "ratings" => [
-            {"player" => {"name" => player1.name, "email" => player1.email}, "value" => 1003},
-            {"player" => {"name" => player2.name, "email" => player2.email}, "value" => 1002},
-            {"player" => {"name" => player3.name, "email" => player3.email}, "value" => 1001}
-          ],
-          "results" => [
-            {"winner" => player1.name, "loser" => player2.name, "created_at" => Time.now.utc.to_s},
-            {"winner" => player2.name, "loser" => player3.name, "created_at" => Time.now.utc.to_s},
-            {"winner" => player3.name, "loser" => player1.name, "created_at" => Time.now.utc.to_s}
-          ]
-        }
-=end
+        json_data.should == JSON.parse(game.to_json)
       end
     end
   end
