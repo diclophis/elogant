@@ -26,7 +26,7 @@ class GamesController < ApplicationController
                      rating_type: "trueskill",
                      min_number_of_teams: 2,
                      max_number_of_teams: 2,
-                     allow_ties: true
+                     allow_ties: false
     render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
   end
 
