@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :game do
-    name { Faker::Lorem.words(1).first.capitalize }
+    sequence(:name) { |n| "user#{n} #{Faker::Lorem.words(1).first.capitalize}" }
+
     rating_type "trueskill"
     min_number_of_teams 2
     max_number_of_teams 2
