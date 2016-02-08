@@ -207,6 +207,14 @@ More details on array comprehensions: 281727d16a3cab3e40eb7268b10e0352cfd30f53
 
 More details on component nesting: eb87a048dcb111f2965157fce20a751b855a8c7e
 
+More details on deployment f2b39f2b5ed484f8cbb43e7f8ff754bb6db07e49...49d5d24d45933968535cb5133455b319b3d087af
+
+- https://github.com/reactjs/react-rails/issues/443
+- https://github.com/reactjs/react-rails/issues/301
+- https://github.com/reactjs/react-rails#reactjs-builds
+- https://github.com/reactjs/react-rails/issues/288
+
+
 # READMES
 
 - https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
