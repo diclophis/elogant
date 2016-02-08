@@ -19,3 +19,10 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+
+production:
+  <<: *default
+  adapter: postgresql
+  host: <%=ENV['PGHOST']%>
+  user: <%=ENV['PGUSER']%>
+  password: <%=ENV['PGPASSWORD']%>
