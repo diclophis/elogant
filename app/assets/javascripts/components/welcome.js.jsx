@@ -17,7 +17,7 @@ class Welcome extends React.Component {
     var mappedGames = this.props.games.map(function(game, i) {
       return (
         <div key={i}>
-          Top <a href={Routes.game_path(game.id)}>{game.name}</a> players
+          <h2>Top <a href={Routes.game_path(game.id)}>{game.name}</a> players</h2>
           <ol>
             {mappedPlayersFromRatings(game.top_ratings)}
           </ol>
@@ -38,12 +38,12 @@ class Welcome extends React.Component {
       <div>
         <div>
           <h1>
-            games
+            game rankings
           </h1>
           {mappedGames}
         </div>
         <div>
-          <h1>players</h1>
+          <h1>all players</h1>
           {mappedPlayers}
         </div>
         <div>
