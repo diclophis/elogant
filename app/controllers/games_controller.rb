@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     @game = Game.new(games_params)
 
     if @game.save
-      redirect_to game_path(@game)
+      redirect_to root_path
     else
       render component: 'Game', props: {game: @game, form_authenticity_token: form_authenticity_token}, prerender: true
     end

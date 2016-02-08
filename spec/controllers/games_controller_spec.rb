@@ -36,7 +36,7 @@ describe GamesController do
 
         game = Game.where(name: game_attributes[:name]).first
 
-        response.should redirect_to(game_path(game))
+        expect(response).to redirect_to(root_path)
       end
 
       it "protects against mass assignment" do
