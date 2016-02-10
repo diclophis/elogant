@@ -8,7 +8,7 @@ class Player extends React.Component {
 
     return (
       <FormWidget model={this.props.player} form_authenticity_token={this.props.form_authenticity_token} model_type="player" model_type_route="players">
-        <h1>player</h1>
+        <h1>player form</h1>
         <ul>
           {mappedErrorMessages}
         </ul>

@@ -16,21 +16,23 @@ class Welcome extends React.Component {
 
     var mappedGames = this.props.games.map(function(game, i) {
       return (
-        <div key={i}>
+        <li key={i}>
           <h2>Top <a href={Routes.game_path(game.id)}>{game.name}</a> players</h2>
           <ol>
             {mappedPlayersFromRatings(game.top_ratings)}
           </ol>
           <a href={Routes.new_game_result_path(game.id)}>create result from a {game.name} match</a>
-        </div>
+        </li>
       );
     });
 
     var mappedPlayers = this.props.players.map(function(player, i) {
       return (
-        <div key={i}>
-          <a href={Routes.player_path(player.id)}>{player.name}</a>
-        </div>
+        <ul key={i}>
+          <li>
+            <a href={Routes.player_path(player.id)}>{player.name}</a>
+          </li>
+        </ul>
       );
     });
 
@@ -40,7 +42,9 @@ class Welcome extends React.Component {
           <h1>
             game rankings
           </h1>
-          {mappedGames}
+          <ul>
+            {mappedGames}
+          </ul>
         </div>
         <div>
           <h1>all players</h1>

@@ -80,7 +80,7 @@ class Result < ApplicationRecord
   end
 
   def valid_relations
-    ["defeats", "ties"]
+    game.try(:allow_ties) == false ? ["defeats"] : ["defeats", "ties"]
   end
 
   def error_messages

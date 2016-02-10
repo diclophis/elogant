@@ -16,7 +16,7 @@ class Game extends React.Component {
 
     return (
       <FormWidget model={this.props.game} form_authenticity_token={this.props.form_authenticity_token} model_type="game" model_type_route="games">
-        <h1>game</h1>
+        <h1>game form</h1>
         <ul>
           {mappedErrorMessages}
         </ul>
