@@ -48,6 +48,10 @@ class Player < ApplicationRecord
     results.where(game_id: game, teams: { rank: Team::FIRST_PLACE_RANK }).to_a.count { |r| !r.tie? }
   end
 
+  def total_losses(game)
+    results.where(game_id: game).to_a.count { |r| r.losers.include?(self) }
+  end
+
   def wins(game, opponent)
     results.where(game_id: game, teams: {rank: Team::FIRST_PLACE_RANK}).against(opponent).to_a.count { |r| !r.tie? }
   end
@@ -60,7 +64,15 @@ class Player < ApplicationRecord
     self.errors
   end
 
+  def wins_over_losses_per_game
+    mapping = {}
+    Game.all.each do |game|
+      mapping[game.id] = "#{total_wins(game)}:#{total_losses(game)}"
+    end
+    mapping
+  end
+
   def as_json(opts = {})
-    super(:methods => [:error_messages, :error_mappings])
+    super(:methods => [:wins_over_losses_per_game, :error_messages, :error_mappings])
   end
 end

@@ -6,10 +6,11 @@ class Welcome extends React.Component {
   }
 
   render() {
-    var mappedPlayersFromRatings = function(ratings) {
-      return ratings.map(function(rating, i) {
+    var mappedPlayersFromRatings = function(game) {
+
+      return game.top_ratings.map(function(rating, i) {
         return(
-          <li key={i}>{rating.player.name}</li>
+          <li key={i}>{rating.player.name} <em>{rating.player.wins_over_losses_per_game[game.id]}</em></li>
         );
       });
     };
@@ -19,7 +20,7 @@ class Welcome extends React.Component {
         <li key={i}>
           <h2>Top <a href={Routes.game_path(game.id)}>{game.name}</a> players</h2>
           <ol>
-            {mappedPlayersFromRatings(game.top_ratings)}
+            {mappedPlayersFromRatings(game)}
           </ol>
           <a href={Routes.new_game_result_path(game.id)}>create result from a {game.name} match</a>
         </li>
