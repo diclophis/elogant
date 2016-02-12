@@ -50,6 +50,9 @@ class Game extends React.Component {
           <label>Min Teams:</label>
           <input name="game[min_number_of_teams]" defaultValue={this.props.game.min_number_of_teams} />
         </p>
+        <p>
+          {(this.props.game.id) ? <input type="submit" name="game[reset]" value="RESET" /> : null}
+        </p>
       </FormWidget>
     );
   }

@@ -67,6 +67,10 @@ class GamesController < ApplicationController
   end
 
   def update
+    if games_params[:reset]
+      @game.results.destroy_all
+    end
+
     if @game.update_attributes(games_params)
       redirect_to game_path(@game)
     else
@@ -87,6 +91,7 @@ class GamesController < ApplicationController
                                 :max_number_of_teams,
                                 :min_number_of_players_per_team,
                                 :max_number_of_players_per_team,
-                                :allow_ties)
+                                :allow_ties,
+                                :reset)
   end
 end

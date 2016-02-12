@@ -1,4 +1,6 @@
 class Game < ApplicationRecord
+  attr_accessor :reset
+
   default_scope { order("updated_at DESC") }
 
   has_many :ratings, dependent: :destroy
