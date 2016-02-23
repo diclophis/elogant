@@ -23,6 +23,9 @@ gem 'js-routes'
 # persistent execjs runtime used for execjs execution
 gem 'alaska'
 
+# provides form_for like form helper react-rails components
+gem 'react-on-rails-form-for', :github => 'diclophis/react-on-rails-form-for', :branch => 'master', :require => 'react-on-rails/form-for'
+
 group :production do
   # interface to the PostgreSQL RDBMS.
   gem 'pg'

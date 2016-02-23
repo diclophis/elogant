@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/diclophis/react-on-rails-form-for.git
+  revision: c4b74cffb44302e1abe360bc14a10b60e3d0124f
+  branch: master
+  specs:
+    react-on-rails-form-for (0.0.1)
+      rails-dom-testing
+      railties
+
+GIT
   remote: git://github.com/rails/arel.git
   revision: 148348278241998e004c411deb3a6cfb7cf71213
   specs:
@@ -193,6 +202,7 @@ DEPENDENCIES
   rails!
   rails-controller-testing
   rails_12factor
+  react-on-rails-form-for!
   react-rails (~> 1.6)
   rspec-rails
   sqlite3
