@@ -56,7 +56,7 @@ class Game < ApplicationRecord
   end
 
   def top_ratings
-    ratings.order("value DESC").limit(5)
+    ratings.order("value DESC").limit(20)
   end
 
   def rater
