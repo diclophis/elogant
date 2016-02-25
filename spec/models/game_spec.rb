@@ -76,11 +76,11 @@ describe Game do
   end
 
   describe "top_ratings" do
-    it "returns 5 ratings associated with the game" do
+    it "returns 20 ratings associated with the game" do
       game = FactoryGirl.create(:game)
-      10.times { FactoryGirl.create(:rating, game: game) }
+      40.times { FactoryGirl.create(:rating, game: game) }
 
-      game.top_ratings.count.should == 5
+      game.top_ratings.count.should == 20
     end
 
     it "orders ratings by value, descending" do
